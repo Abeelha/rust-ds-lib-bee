@@ -1,0 +1,36 @@
+[package]
+name = "rust-ds-lib-bee"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+authors = ["Your Name <your.email@example.com>"]
+description = "A comprehensive, educational Rust library implementing fundamental and advanced data structures"
+documentation = "https://docs.rs/rust-ds-lib-bee"
+repository = "https://github.com/yourusername/rust-ds-lib-bee"
+license = "MIT OR Apache-2.0"
+keywords = ["data-structures", "algorithms", "collections", "educational", "no-std"]
+categories = ["data-structures", "algorithms", "no-std"]
+readme = "README.md"
+
+[dependencies]
+
+[dev-dependencies]
+criterion = { version = "0.5", features = ["html_reports"] }
+proptest = "1.4"
+rayon = "1.8"
+
+[features]
+default = ["std"]
+std = []
+
+[[bench]]
+name = "linear_benches"
+harness = false
+
+[[bench]]
+name = "tree_benches"
+harness = false
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]
