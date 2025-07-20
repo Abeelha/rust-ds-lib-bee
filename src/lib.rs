@@ -33,4 +33,6 @@ pub mod utils;
 
 // Re-export commonly used types
 pub use linear::{Stack, Queue};
+pub use tree::BinarySearchTree;
+pub use hash::{HashMap, HashSet};
 pub use utils::traits::*;

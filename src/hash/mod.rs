@@ -1,8 +1,11 @@
 //! Hash-based data structures
 
-// TODO: Implement hash structures
-// pub mod hashmap;
-// pub mod hashset;
+pub mod hashmap;
+pub mod hashset;
+
+// TODO: Implement additional hash structures
 // pub mod bloom_filter;
 
-// Placeholder for future development
+// Re-export main types
+pub use hashmap::HashMap;
+pub use hashset::HashSet;

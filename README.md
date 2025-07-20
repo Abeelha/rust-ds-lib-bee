@@ -1,9 +1,9 @@
 # 🐝 Rust Data Structures Library (rust-ds-lib-bee)
 
-[![CI](https://github.com/yourusername/rust-ds-lib-bee/workflows/CI/badge.svg)](https://github.com/yourusername/rust-ds-lib-bee/actions)
+[![CI](https://github.com/abeelha/rust-ds-lib-bee/workflows/CI/badge.svg)](https://github.com/abeelha/rust-ds-lib-bee/actions)
 [![Crates.io](https://img.shields.io/crates/v/rust-ds-lib-bee.svg)](https://crates.io/crates/rust-ds-lib-bee)
 [![Documentation](https://docs.rs/rust-ds-lib-bee/badge.svg)](https://docs.rs/rust-ds-lib-bee)
-[![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](https://github.com/yourusername/rust-ds-lib-bee#license)
+[![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](https://github.com/abeelha/rust-ds-lib-bee#license)
 
 A comprehensive, educational Rust library implementing fundamental and advanced data structures with emphasis on safety, performance, and idiomatic Rust patterns.
 
@@ -14,10 +14,15 @@ A comprehensive, educational Rust library implementing fundamental and advanced 
   - Stack (LIFO) with generic support
   - Queue (FIFO) with efficient operations
   - Singly Linked List with iterator support
+- **Tree Structures**
+  - Binary Search Tree with O(log n) operations and in-order traversal
+- **Hash Structures**
+  - HashMap with separate chaining collision resolution
+  - HashSet with set operations (union, intersection, difference)
 
 ### 🚧 In Development
-- **Tree Structures**: BST, AVL, Red-Black, Trie, B-Tree
-- **Hash Structures**: HashMap, HashSet, BloomFilter
+- **Advanced Tree Structures**: AVL, Red-Black, Trie, B-Tree
+- **Additional Hash Structures**: BloomFilter
 - **Heap Structures**: BinaryHeap, PriorityQueue
 - **Graph Structures**: Adjacency List/Matrix, Graph Algorithms
 
@@ -33,7 +38,7 @@ rust-ds-lib-bee = "0.1.0"
 ### Basic Usage
 
 ```rust
-use rust_ds_lib_bee::linear::{Stack, Queue, LinkedList};
+use rust_ds_lib_bee::{Stack, Queue, LinkedList, BinarySearchTree, HashMap, HashSet};
 
 // Stack operations
 let mut stack = Stack::new();
@@ -41,7 +46,7 @@ stack.push(1);
 stack.push(2);
 assert_eq!(stack.pop(), Some(2));
 
-// Queue operations  
+// Queue operations
 let mut queue = Queue::new();
 queue.enqueue("hello");
 queue.enqueue("world");
@@ -51,6 +56,24 @@ assert_eq!(queue.dequeue(), Some("hello"));
 let mut list = LinkedList::new();
 list.push_front(42);
 assert_eq!(list.front(), Some(&42));
+
+// Binary Search Tree operations
+let mut tree = BinarySearchTree::new();
+tree.insert(5);
+tree.insert(3);
+tree.insert(7);
+assert!(tree.contains(&5));
+
+// HashMap operations
+let mut map = HashMap::new();
+map.insert("key", "value");
+assert_eq!(map.get(&"key"), Some(&"value"));
+
+// HashSet operations
+let mut set = HashSet::new();
+set.insert(1);
+set.insert(2);
+assert!(set.contains(&1));
 ```
 
 ## 📖 Documentation
@@ -85,8 +108,8 @@ This library is designed with learning in mind:
 This project follows a phased development approach:
 
 - **Phase 1** ✅: Foundation (Linear structures, testing framework)
-- **Phase 2** 🚧: Core Trees & Hashing
-- **Phase 3** 📋: Advanced Structures
+- **Phase 2** ✅: Core Trees & Hashing (BST, HashMap, HashSet)
+- **Phase 3** 🚧: Advanced Structures (AVL, Red-Black, Heaps, Graphs)
 - **Phase 4** 📋: Polish & Release
 
 ## 🤝 Contributing
@@ -120,11 +143,8 @@ Rust 1.70 or later.
 ## 📄 License
 
 Licensed under either of
-
-- Apache License, Version 2.0 ([LICENSE-APACHE](LICENSE-APACHE) or http://www.apache.org/licenses/LICENSE-2.0)
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
 
-at your option.
 
 ## 🙏 Acknowledgments
 
