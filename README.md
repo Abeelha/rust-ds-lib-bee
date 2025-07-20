@@ -1,7 +1,7 @@
 # 🐝 Rust Data Structures Library (rust-ds-lib-bee)
 
 ![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
-![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![Version](https://img.shields.io/badge/version-0.1.1-blue)
 ![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)
 
 A comprehensive, educational Rust library implementing fundamental and advanced data structures with emphasis on safety, performance, and idiomatic Rust patterns.
