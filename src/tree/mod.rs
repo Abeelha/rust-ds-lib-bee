@@ -1,10 +1,9 @@
 //! Tree-based data structures
 
 pub mod bst;
+pub mod avl;
+pub mod trie;
 
-// TODO: Implement advanced tree structures
-// pub mod avl;
-// pub mod trie;
-
-// Re-export main types
 pub use bst::BinarySearchTree;
+pub use avl::AvlTree;
+pub use trie::Trie;

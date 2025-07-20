@@ -1,8 +1,5 @@
-//! Graph-based data structures and algorithms
+pub mod adjacency_list;
+pub mod algorithms;
 
-// TODO: Implement graph structures
-// pub mod adjacency_list;
-// pub mod adjacency_matrix;
-// pub mod algorithms;
-
-// Placeholder for future development
+pub use adjacency_list::Graph;
+pub use algorithms::*;

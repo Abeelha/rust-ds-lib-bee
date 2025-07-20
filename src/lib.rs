@@ -31,8 +31,9 @@ pub mod heap;
 pub mod graph;
 pub mod utils;
 
-// Re-export commonly used types
 pub use linear::{Stack, Queue};
-pub use tree::BinarySearchTree;
+pub use tree::{BinarySearchTree, AvlTree, Trie};
 pub use hash::{HashMap, HashSet};
+pub use heap::{BinaryHeap, PriorityQueue};
+pub use graph::Graph;
 pub use utils::traits::*;

@@ -1,7 +1,5 @@
-//! Heap-based data structures
+pub mod binary_heap;
+pub mod priority_queue;
 
-// TODO: Implement heap structures
-// pub mod binary_heap;
-// pub mod priority_queue;
-
-// Placeholder for future development
+pub use binary_heap::BinaryHeap;
+pub use priority_queue::PriorityQueue;
