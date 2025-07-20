@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use rust_ds_lib_bee::{BinarySearchTree, AvlTree, HashMap, BinaryHeap, PriorityQueue, Graph, Trie};
+use rust_ds_lib_bee::{BinarySearchTree, AvlTree, HashMap, BinaryHeap, PriorityQueue, Trie};
 
 fn bst_insert_benchmark(c: &mut Criterion) {
     c.bench_function("bst_insert_1000", |b| {

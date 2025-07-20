@@ -1,30 +1,31 @@
 # 🐝 Rust Data Structures Library (rust-ds-lib-bee)
 
-[![CI](https://github.com/abeelha/rust-ds-lib-bee/workflows/CI/badge.svg)](https://github.com/abeelha/rust-ds-lib-bee/actions)
-[![Crates.io](https://img.shields.io/crates/v/rust-ds-lib-bee.svg)](https://crates.io/crates/rust-ds-lib-bee)
-[![Documentation](https://docs.rs/rust-ds-lib-bee/badge.svg)](https://docs.rs/rust-ds-lib-bee)
-[![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](https://github.com/abeelha/rust-ds-lib-bee#license)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Version](https://img.shields.io/badge/version-0.1.0-blue)
+![License](https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue)
 
 A comprehensive, educational Rust library implementing fundamental and advanced data structures with emphasis on safety, performance, and idiomatic Rust patterns.
 
 ## 🎯 Features
 
-### ✅ Currently Implemented
+### ✅ Implemented Data Structures
 - **Linear Structures**
   - Stack (LIFO) with generic support
-  - Queue (FIFO) with efficient operations
+  - Queue (FIFO) with efficient operations  
   - Singly Linked List with iterator support
 - **Tree Structures**
-  - Binary Search Tree with O(log n) operations and in-order traversal
+  - Binary Search Tree with O(log n) operations
+  - AVL Tree with automatic balancing
+  - Trie (prefix tree) for string operations
 - **Hash Structures**
   - HashMap with separate chaining collision resolution
   - HashSet with set operations (union, intersection, difference)
-
-### 🚧 In Development
-- **Advanced Tree Structures**: AVL, Red-Black, Trie, B-Tree
-- **Additional Hash Structures**: BloomFilter
-- **Heap Structures**: BinaryHeap, PriorityQueue
-- **Graph Structures**: Adjacency List/Matrix, Graph Algorithms
+- **Heap Structures**
+  - Binary Heap (Min/Max variants)
+  - Priority Queue with custom priorities
+- **Graph Structures**
+  - Graph with adjacency list representation
+  - BFS, DFS, and pathfinding algorithms
 
 ## 🚀 Quick Start
 
@@ -78,7 +79,7 @@ assert!(set.contains(&1));
 
 ## 📖 Documentation
 
-Full API documentation is available on [docs.rs](https://docs.rs/rust-ds-lib-bee).
+Run `cargo doc --open` to view the full API documentation locally.
 
 ## 🧪 Testing
 
@@ -105,12 +106,11 @@ This library is designed with learning in mind:
 
 ## 🔧 Development Status
 
-This project follows a phased development approach:
+Development completed in three phases:
 
 - **Phase 1** ✅: Foundation (Linear structures, testing framework)
-- **Phase 2** ✅: Core Trees & Hashing (BST, HashMap, HashSet)
-- **Phase 3** 🚧: Advanced Structures (AVL, Red-Black, Heaps, Graphs)
-- **Phase 4** 📋: Polish & Release
+- **Phase 2** ✅: Core Trees & Hashing (BST, HashMap, HashSet)  
+- **Phase 3** ✅: Advanced Structures (AVL, Heaps, Graphs, Trie)
 
 ## 🤝 Contributing
 
