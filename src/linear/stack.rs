@@ -1,6 +1,6 @@
 //! Stack implementation with LIFO (Last In, First Out) semantics
 
-use crate::utils::{Clear, Size, Peek, PeekMut};
+use crate::utils::{Clear, Peek, PeekMut, Size};
 
 /// A stack data structure with LIFO semantics
 ///
@@ -24,9 +24,7 @@ pub struct Stack<T> {
 impl<T> Stack<T> {
     /// Creates a new empty stack
     pub fn new() -> Self {
-        Self {
-            data: Vec::new(),
-        }
+        Self { data: Vec::new() }
     }
 
     /// Creates a new stack with the specified capacity

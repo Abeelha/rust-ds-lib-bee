@@ -32,11 +32,11 @@ impl Trie {
 
     pub fn insert(&mut self, word: &str) -> bool {
         let mut current = &mut self.root;
-        
+
         for ch in word.chars() {
             current = current.children.entry(ch).or_insert_with(TrieNode::new);
         }
-        
+
         if current.is_end_of_word {
             false
         } else {
@@ -74,27 +74,27 @@ impl Trie {
         }
 
         let ch = word.chars().nth(index).unwrap();
-        
+
         if let Some(child) = node.children.get_mut(&ch) {
             let should_delete_child = Self::remove_recursive_static(child, word, index + 1);
-            
+
             if should_delete_child {
                 node.children.remove(&ch);
             }
-            
+
             return !node.is_end_of_word && node.children.is_empty();
         }
-        
+
         false
     }
 
     pub fn find_words_with_prefix(&self, prefix: &str) -> Vec<String> {
         let mut result = Vec::new();
-        
+
         if let Some(prefix_node) = self.find_node(prefix) {
             Self::collect_words(prefix_node, prefix, &mut result);
         }
-        
+
         result
     }
 
@@ -112,14 +112,14 @@ impl Trie {
 
     fn find_node(&self, word: &str) -> Option<&TrieNode> {
         let mut current = &self.root;
-        
+
         for ch in word.chars() {
             match current.children.get(&ch) {
                 Some(node) => current = node,
                 None => return None,
             }
         }
-        
+
         Some(current)
     }
 
@@ -226,7 +226,7 @@ mod tests {
     #[test]
     fn insert_and_contains() {
         let mut trie = Trie::new();
-        
+
         assert!(trie.insert("hello"));
         assert!(!trie.insert("hello"));
         assert!(trie.insert("world"));
@@ -324,7 +324,7 @@ mod tests {
     fn from_iterator() {
         let words = vec!["hello", "world", "help"];
         let trie: Trie = words.into_iter().collect();
-        
+
         assert_eq!(trie.len(), 3);
         assert!(trie.contains("hello"));
         assert!(trie.contains("world"));
@@ -347,7 +347,7 @@ mod tests {
     #[test]
     fn edge_cases() {
         let mut trie = Trie::new();
-        
+
         assert!(trie.insert(""));
         assert!(trie.contains(""));
         assert_eq!(trie.len(), 1);

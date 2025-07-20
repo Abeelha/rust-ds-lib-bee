@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use rust_ds_lib_bee::linear::{Stack, Queue, LinkedList};
+use rust_ds_lib_bee::linear::{LinkedList, Queue, Stack};
 
 fn stack_benchmark(c: &mut Criterion) {
     c.bench_function("stack_push_pop_1000", |b| {
@@ -43,5 +43,10 @@ fn linked_list_benchmark(c: &mut Criterion) {
     });
 }
 
-criterion_group!(benches, stack_benchmark, queue_benchmark, linked_list_benchmark);
+criterion_group!(
+    benches,
+    stack_benchmark,
+    queue_benchmark,
+    linked_list_benchmark
+);
 criterion_main!(benches);

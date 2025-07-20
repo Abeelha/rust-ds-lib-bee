@@ -32,7 +32,7 @@ fn bench_bloom_filter_different_sizes(c: &mut Criterion) {
     let mut group = c.benchmark_group("bloom_filter_sizes");
 
     for size in [100, 1000, 10000].iter() {
-        group.bench_with_input(format!("insert_{}", size), size, |b, &size| {
+        group.bench_with_input(format!("insert_{size}"), size, |b, &size| {
             let mut filter = BloomFilter::new(size, 0.01);
             let mut counter = 0;
             b.iter(|| {
@@ -49,7 +49,7 @@ fn bench_bloom_filter_false_positive_rates(c: &mut Criterion) {
     let mut group = c.benchmark_group("bloom_filter_fp_rates");
 
     for &rate in [0.001, 0.01, 0.1].iter() {
-        group.bench_with_input(format!("fp_rate_{}", rate), &rate, |b, &rate| {
+        group.bench_with_input(format!("fp_rate_{rate}"), &rate, |b, &rate| {
             let mut filter = BloomFilter::new(1000, rate);
             let mut counter = 0;
             b.iter(|| {

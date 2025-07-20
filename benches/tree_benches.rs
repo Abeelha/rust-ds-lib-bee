@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use rust_ds_lib_bee::{BinarySearchTree, AvlTree, HashMap, BinaryHeap, PriorityQueue, Trie};
+use rust_ds_lib_bee::{AvlTree, BinaryHeap, BinarySearchTree, HashMap, PriorityQueue, Trie};
 
 fn bst_insert_benchmark(c: &mut Criterion) {
     c.bench_function("bst_insert_1000", |b| {
@@ -103,7 +103,7 @@ fn heap_benchmark(c: &mut Criterion) {
             for i in 0..1000 {
                 heap.push(black_box(i));
             }
-            while let Some(_) = heap.pop() {}
+            while heap.pop().is_some() {}
         })
     });
 }
@@ -115,7 +115,7 @@ fn priority_queue_benchmark(c: &mut Criterion) {
             for i in 0..1000 {
                 pq.push(black_box(i), black_box(i));
             }
-            while let Some(_) = pq.pop() {}
+            while pq.pop().is_some() {}
         })
     });
 }
@@ -125,10 +125,10 @@ fn trie_benchmark(c: &mut Criterion) {
         b.iter(|| {
             let mut trie = Trie::new();
             for i in 0..100 {
-                trie.insert(&format!("word{}", i));
+                trie.insert(&format!("word{i}"));
             }
             for i in 0..100 {
-                black_box(trie.contains(&format!("word{}", i)));
+                black_box(trie.contains(&format!("word{i}")));
             }
         })
     });

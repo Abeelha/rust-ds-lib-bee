@@ -131,7 +131,7 @@ impl<T: Ord> AvlTree<T> {
             None => {
                 let right = node.right.take();
                 (node, right)
-            },
+            }
             Some(left) => {
                 let (min_node, new_left) = Self::extract_min(left);
                 node.left = new_left;
@@ -342,12 +342,12 @@ mod tests {
     #[test]
     fn insert_maintains_balance() {
         let mut tree = AvlTree::new();
-        
+
         for i in 1..=7 {
             tree.insert(i);
             assert!(tree.is_balanced());
         }
-        
+
         assert_eq!(tree.len(), 7);
         assert_eq!(tree.height(), 3);
     }
@@ -358,7 +358,7 @@ mod tests {
         tree.insert(3);
         tree.insert(2);
         tree.insert(1);
-        
+
         assert!(tree.is_balanced());
         assert_eq!(tree.height(), 2);
     }
@@ -369,7 +369,7 @@ mod tests {
         tree.insert(1);
         tree.insert(2);
         tree.insert(3);
-        
+
         assert!(tree.is_balanced());
         assert_eq!(tree.height(), 2);
     }
@@ -380,7 +380,7 @@ mod tests {
         tree.insert(3);
         tree.insert(1);
         tree.insert(2);
-        
+
         assert!(tree.is_balanced());
         assert_eq!(tree.height(), 2);
     }
@@ -391,7 +391,7 @@ mod tests {
         tree.insert(1);
         tree.insert(3);
         tree.insert(2);
-        
+
         assert!(tree.is_balanced());
         assert_eq!(tree.height(), 2);
     }
@@ -407,7 +407,7 @@ mod tests {
             assert!(tree.contains(&i));
         }
         assert!(!tree.contains(&8));
-        
+
         assert_eq!(tree.min(), Some(&1));
         assert_eq!(tree.max(), Some(&7));
     }
@@ -446,17 +446,17 @@ mod tests {
     #[test]
     fn stress_test() {
         let mut tree = AvlTree::new();
-        
+
         for i in 0..100 {
             tree.insert(i);
             assert!(tree.is_balanced());
         }
-        
+
         for i in (0..100).step_by(2) {
             tree.remove(&i);
             assert!(tree.is_balanced());
         }
-        
+
         assert_eq!(tree.len(), 50);
     }
 }

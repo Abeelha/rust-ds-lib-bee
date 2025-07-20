@@ -10,7 +10,7 @@ pub trait Clear {
 pub trait Size {
     /// Returns the number of elements in the container
     fn len(&self) -> usize;
-    
+
     /// Returns true if the container is empty
     fn is_empty(&self) -> bool {
         self.len() == 0
@@ -21,7 +21,7 @@ pub trait Size {
 pub trait Capacity: Size {
     /// Returns the maximum number of elements this container can hold
     fn capacity(&self) -> usize;
-    
+
     /// Returns true if the container is at maximum capacity
     fn is_full(&self) -> bool {
         self.len() == self.capacity()

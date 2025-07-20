@@ -1,6 +1,6 @@
 //! Queue implementation with FIFO (First In, First Out) semantics
 
-use crate::utils::{Clear, Size, Peek};
+use crate::utils::{Clear, Peek, Size};
 
 /// A queue data structure with FIFO semantics
 ///
@@ -52,7 +52,7 @@ impl<T> Queue<T> {
         }
 
         let result = Some(self.data.remove(self.front));
-        
+
         // Compact the queue if we've removed too many elements
         if self.front > self.data.len() / 2 && self.front > 16 {
             self.data.drain(..self.front);

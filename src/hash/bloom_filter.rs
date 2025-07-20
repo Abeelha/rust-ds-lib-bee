@@ -278,11 +278,7 @@ mod tests {
         }
 
         for value in &test_values {
-            assert!(
-                filter.contains(value),
-                "False negative for value: {}",
-                value
-            );
+            assert!(filter.contains(value), "False negative for value: {value}");
         }
     }
 
@@ -309,9 +305,7 @@ mod tests {
 
         assert!(
             actual_rate <= theoretical_rate * 2.0,
-            "Actual false positive rate {} exceeds theoretical bound {}",
-            actual_rate,
-            theoretical_rate
+            "Actual false positive rate {actual_rate} exceeds theoretical bound {theoretical_rate}"
         );
     }
 }

@@ -1,4 +1,4 @@
-use crate::utils::{Clear, Size, Peek, PeekMut};
+use crate::utils::{Clear, Peek, PeekMut, Size};
 use std::cmp::Ordering;
 use std::fmt;
 
@@ -52,11 +52,11 @@ impl<T: Ord> BinaryHeap<T> {
         let last_idx = self.data.len() - 1;
         self.data.swap(0, last_idx);
         let result = self.data.pop();
-        
+
         if !self.data.is_empty() {
             self.sift_down(0);
         }
-        
+
         result
     }
 
@@ -89,11 +89,15 @@ impl<T: Ord> BinaryHeap<T> {
             let right_child = 2 * idx + 2;
             let mut largest = idx;
 
-            if left_child < self.data.len() && self.compare(left_child, largest) == Ordering::Greater {
+            if left_child < self.data.len()
+                && self.compare(left_child, largest) == Ordering::Greater
+            {
                 largest = left_child;
             }
 
-            if right_child < self.data.len() && self.compare(right_child, largest) == Ordering::Greater {
+            if right_child < self.data.len()
+                && self.compare(right_child, largest) == Ordering::Greater
+            {
                 largest = right_child;
             }
 
@@ -194,7 +198,7 @@ mod tests {
     #[test]
     fn max_heap_ordering() {
         let mut heap = BinaryHeap::max_heap();
-        
+
         for i in [3, 1, 4, 1, 5, 9, 2, 6] {
             heap.push(i);
         }
@@ -210,7 +214,7 @@ mod tests {
     #[test]
     fn min_heap_ordering() {
         let mut heap = BinaryHeap::min_heap();
-        
+
         for i in [3, 1, 4, 1, 5, 9, 2, 6] {
             heap.push(i);
         }
@@ -254,7 +258,7 @@ mod tests {
     fn from_iterator() {
         let values = vec![3, 1, 4, 1, 5, 9];
         let heap: BinaryHeap<_> = values.into_iter().collect();
-        
+
         assert_eq!(heap.len(), 6);
         assert_eq!(heap.peek(), Some(&9));
     }
@@ -269,7 +273,7 @@ mod tests {
     #[test]
     fn heap_property_maintained() {
         let mut heap = BinaryHeap::max_heap();
-        
+
         for i in 1..=20 {
             heap.push(i);
             assert_eq!(heap.peek(), Some(&i));

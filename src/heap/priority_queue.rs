@@ -1,5 +1,5 @@
 use crate::heap::BinaryHeap;
-use crate::utils::{Clear, Size, Peek};
+use crate::utils::{Clear, Peek, Size};
 use std::cmp::Ordering;
 use std::fmt;
 
@@ -46,7 +46,6 @@ impl<T, P: Ord> PriorityQueue<T, P> {
         }
     }
 
-
     pub fn push(&mut self, item: T, priority: P) {
         self.heap.push(PriorityItem { item, priority });
     }
@@ -60,7 +59,9 @@ impl<T, P: Ord> PriorityQueue<T, P> {
     }
 
     pub fn peek_priority(&self) -> Option<&P> {
-        self.heap.peek().map(|priority_item| &priority_item.priority)
+        self.heap
+            .peek()
+            .map(|priority_item| &priority_item.priority)
     }
 
     pub fn capacity(&self) -> usize {
