@@ -331,15 +331,14 @@ Remember that this library prioritizes:
 
 Contributors will be:
 
-- Listed in AUTHORS.md
+- Listed in [AUTHORS](AUTHORS.md)
 - Mentioned in release notes for significant contributions
 - Credited in documentation for major features
 
 ## Getting Help
 
-- **Discussions**: Use GitHub Discussions for questions
-- **Issues**: Create issues for bugs or feature requests
-- **Discord/Matrix**: [Links to community channels if available]
+- **Discussions**: [GitHub Discussions](https://github.com/abeelha/rust-ds-lib-bee/discussions) for questions
+- **Issues**: [Create an Issue](https://github.com/abeelha/rust-ds-lib-bee/issues/new) for bugs or feature requests
 
 ## Resources
 

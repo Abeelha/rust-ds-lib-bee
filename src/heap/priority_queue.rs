@@ -46,6 +46,7 @@ impl<T, P: Ord> PriorityQueue<T, P> {
         }
     }
 
+
     pub fn push(&mut self, item: T, priority: P) {
         self.heap.push(PriorityItem { item, priority });
     }
@@ -144,7 +145,7 @@ mod tests {
     #[test]
     fn priority_ordering() {
         let mut queue = PriorityQueue::new();
-        
+
         queue.push("low", 1);
         queue.push("high", 10);
         queue.push("medium", 5);
@@ -199,7 +200,7 @@ mod tests {
     fn from_iterator() {
         let items = vec![("low", 1), ("high", 10), ("medium", 5)];
         let queue: PriorityQueue<_, _> = items.into_iter().collect();
-        
+
         assert_eq!(queue.len(), 3);
         assert_eq!(queue.peek(), Some(&"high"));
     }
@@ -224,11 +225,11 @@ mod tests {
         queue.push("third", 5);
 
         assert_eq!(queue.len(), 3);
-        
+
         let first = queue.pop().unwrap();
         let second = queue.pop().unwrap();
         let third = queue.pop().unwrap();
-        
+
         assert!(["first", "second", "third"].contains(&first));
         assert!(["first", "second", "third"].contains(&second));
         assert!(["first", "second", "third"].contains(&third));

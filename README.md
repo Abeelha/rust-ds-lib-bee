@@ -9,6 +9,7 @@ A comprehensive, educational Rust library implementing fundamental and advanced 
 ## 🎯 Features
 
 ### ✅ Implemented Data Structures
+
 - **Linear Structures**
   - Stack (LIFO) with generic support
   - Queue (FIFO) with efficient operations
@@ -136,12 +137,12 @@ Development completed in three phases:
 
 ## 🤝 Contributing
 
-Contributions are welcome! Please see our [Contributing Guide](docs/contributing.md) for details.
+Contributions are welcome! Please see our [Contributing Guide](docs/CONTRIBUTING.md) for details.
 
 ### Development Setup
 
 ```bash
-git clone https://github.com/yourusername/rust-ds-lib-bee.git
+git clone https://github.com/abeelha/rust-ds-lib-bee.git
 cd rust-ds-lib-bee
 cargo test
 cargo bench
@@ -153,23 +154,23 @@ All data structures include comprehensive benchmarks. Run `cargo bench` to see p
 
 ### Time Complexity Overview
 
-| Data Structure | Insert | Search/Contains | Delete | Peek/Access | Space |
-|----------------|--------|----------------|--------|-------------|-------|
-| **Stack** | O(1) | - | O(1) | O(1) | O(n) |
-| **Queue** | O(1) | - | O(1) | O(1) | O(n) |
-| **LinkedList** | O(1)* | O(n) | O(1)* | O(1) | O(n) |
-| **BinarySearchTree** | O(log n)** | O(log n)** | O(log n)** | O(log n)** | O(n) |
-| **AVL Tree** | O(log n) | O(log n) | O(log n) | O(log n) | O(n) |
-| **Red-Black Tree** | O(log n) | O(log n) | O(log n) | O(log n) | O(n) |
-| **Trie** | O(m) | O(m) | O(m) | O(1) | O(ALPHABET × N × M) |
-| **HashMap** | O(1)*** | O(1)*** | O(1)*** | O(1)*** | O(n) |
-| **HashSet** | O(1)*** | O(1)*** | O(1)*** | - | O(n) |
-| **BloomFilter** | O(k) | O(k) | - | - | O(m) |
-| **BinaryHeap** | O(log n) | - | O(log n) | O(1) | O(n) |
-| **PriorityQueue** | O(log n) | - | O(log n) | O(1) | O(n) |
-| **Graph** | O(1) | O(V + E) | O(V + E) | O(1) | O(V + E) |
-| **WeightedGraph** | O(1) | O(V + E) | O(V + E) | O(1) | O(V + E) |
-| **Dijkstra's Algorithm** | - | O((V + E) log V) | - | - | O(V) |
+| Data Structure           | Insert       | Search/Contains  | Delete       | Peek/Access  | Space               |
+| ------------------------ | ------------ | ---------------- | ------------ | ------------ | ------------------- |
+| **Stack**                | O(1)         | -                | O(1)         | O(1)         | O(n)                |
+| **Queue**                | O(1)         | -                | O(1)         | O(1)         | O(n)                |
+| **LinkedList**           | O(1)\*       | O(n)             | O(1)\*       | O(1)         | O(n)                |
+| **BinarySearchTree**     | O(log n)\*\* | O(log n)\*\*     | O(log n)\*\* | O(log n)\*\* | O(n)                |
+| **AVL Tree**             | O(log n)     | O(log n)         | O(log n)     | O(log n)     | O(n)                |
+| **Red-Black Tree**       | O(log n)     | O(log n)         | O(log n)     | O(log n)     | O(n)                |
+| **Trie**                 | O(m)         | O(m)             | O(m)         | O(1)         | O(ALPHABET × N × M) |
+| **HashMap**              | O(1)\*\*\*   | O(1)\*\*\*       | O(1)\*\*\*   | O(1)\*\*\*   | O(n)                |
+| **HashSet**              | O(1)\*\*\*   | O(1)\*\*\*       | O(1)\*\*\*   | -            | O(n)                |
+| **BloomFilter**          | O(k)         | O(k)             | -            | -            | O(m)                |
+| **BinaryHeap**           | O(log n)     | -                | O(log n)     | O(1)         | O(n)                |
+| **PriorityQueue**        | O(log n)     | -                | O(log n)     | O(1)         | O(n)                |
+| **Graph**                | O(1)         | O(V + E)         | O(V + E)     | O(1)         | O(V + E)            |
+| **WeightedGraph**        | O(1)         | O(V + E)         | O(V + E)     | O(1)         | O(V + E)            |
+| **Dijkstra's Algorithm** | -            | O((V + E) log V) | -            | -            | O(V)                |
 
 **Notes:**
 - \* Front/back operations only; arbitrary position is O(n)
@@ -197,7 +198,7 @@ Rust 1.70 or later.
 
 ## 📄 License
 
-- MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
+- MIT license ([LICENSE](LICENSE) or http://opensource.org/licenses/MIT)
 
 ## 🙏 Acknowledgments
 

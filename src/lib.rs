@@ -24,16 +24,16 @@
 //! assert_eq!(stack.pop(), Some(42));
 //! ```
 
-pub mod linear;
-pub mod tree;
+pub mod graph;
 pub mod hash;
 pub mod heap;
-pub mod graph;
+pub mod linear;
+pub mod tree;
 pub mod utils;
 
-pub use linear::{Stack, Queue};
-pub use tree::{BinarySearchTree, AvlTree, Trie};
-pub use hash::{HashMap, HashSet};
+pub use graph::{Graph, WeightedGraph};
+pub use hash::{BloomFilter, HashMap, HashSet};
 pub use heap::{BinaryHeap, PriorityQueue};
-pub use graph::Graph;
+pub use linear::{Queue, Stack};
+pub use tree::{AvlTree, BinarySearchTree, RedBlackTree, Trie};
 pub use utils::traits::*;

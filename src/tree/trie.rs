@@ -47,7 +47,7 @@ impl Trie {
     }
 
     pub fn contains(&self, word: &str) -> bool {
-        self.find_node(word).map_or(false, |node| node.is_end_of_word)
+        self.find_node(word).is_some_and(|node| node.is_end_of_word)
     }
 
     pub fn starts_with(&self, prefix: &str) -> bool {
@@ -92,13 +92,13 @@ impl Trie {
         let mut result = Vec::new();
         
         if let Some(prefix_node) = self.find_node(prefix) {
-            self.collect_words(prefix_node, prefix, &mut result);
+            Self::collect_words(prefix_node, prefix, &mut result);
         }
         
         result
     }
 
-    fn collect_words(&self, node: &TrieNode, current_word: &str, result: &mut Vec<String>) {
+    fn collect_words(node: &TrieNode, current_word: &str, result: &mut Vec<String>) {
         if node.is_end_of_word {
             result.push(current_word.to_string());
         }
@@ -106,7 +106,7 @@ impl Trie {
         for (ch, child_node) in &node.children {
             let mut next_word = current_word.to_string();
             next_word.push(*ch);
-            self.collect_words(child_node, &next_word, result);
+            Self::collect_words(child_node, &next_word, result);
         }
     }
 
@@ -129,7 +129,7 @@ impl Trie {
 
     pub fn all_words(&self) -> Vec<String> {
         let mut result = Vec::new();
-        self.collect_words(&self.root, "", &mut result);
+        Self::collect_words(&self.root, "", &mut result);
         result
     }
 

@@ -36,11 +36,13 @@ where
     }
 
     pub fn add_vertex(&mut self, vertex: T) -> bool {
-        if self.adjacency_list.contains_key(&vertex) {
-            false
-        } else {
-            self.adjacency_list.insert(vertex, Vec::new());
-            true
+        use std::collections::hash_map::Entry;
+        match self.adjacency_list.entry(vertex) {
+            Entry::Vacant(e) => {
+                e.insert(Vec::new());
+                true
+            }
+            Entry::Occupied(_) => false,
         }
     }
 
@@ -112,7 +114,7 @@ where
     pub fn has_edge(&self, from: &T, to: &T) -> bool {
         self.adjacency_list
             .get(from)
-            .map_or(false, |list| list.contains(to))
+            .is_some_and(|list| list.contains(to))
     }
 
     pub fn neighbors(&self, vertex: &T) -> Option<&Vec<T>> {
@@ -260,7 +262,7 @@ mod tests {
     #[test]
     fn add_vertices() {
         let mut graph = Graph::directed();
-        
+
         assert!(graph.add_vertex(1));
         assert!(graph.add_vertex(2));
         assert!(!graph.add_vertex(1));
@@ -274,7 +276,7 @@ mod tests {
     #[test]
     fn directed_graph_edges() {
         let mut graph = Graph::directed();
-        
+
         assert!(graph.add_edge(1, 2));
         assert!(graph.add_edge(2, 3));
         assert!(!graph.add_edge(1, 2));
@@ -288,7 +290,7 @@ mod tests {
     #[test]
     fn undirected_graph_edges() {
         let mut graph = Graph::undirected();
-        
+
         assert!(graph.add_edge(1, 2));
         assert!(graph.add_edge(2, 3));
 
