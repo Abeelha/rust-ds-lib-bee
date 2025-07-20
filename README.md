@@ -1,6 +1,6 @@
 # 🐝 Rust Data Structures Library (rust-ds-lib-bee)
 
-[![CI](https://github.com/yourusername/rust-ds-lib-bee/workflows/CI/badge.svg)](https://github.com/yourusername/rust-ds-lib-bee/actions)
+[![CI](https://github.com/abeelha/rust-ds-lib-bee/workflows/CI/badge.svg)](https://github.com/abeelha/rust-ds-lib-bee/actions)
 [![Crates.io](https://img.shields.io/crates/v/rust-ds-lib-bee.svg)](https://crates.io/crates/rust-ds-lib-bee)
 [![Documentation](https://docs.rs/rust-ds-lib-bee/badge.svg)](https://docs.rs/rust-ds-lib-bee)
 [![License: MIT OR Apache-2.0](https://img.shields.io/badge/License-MIT%20OR%20Apache--2.0-blue.svg)](https://github.com/yourusername/rust-ds-lib-bee#license)
