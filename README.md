@@ -11,21 +11,24 @@ A comprehensive, educational Rust library implementing fundamental and advanced 
 ### ✅ Implemented Data Structures
 - **Linear Structures**
   - Stack (LIFO) with generic support
-  - Queue (FIFO) with efficient operations  
+  - Queue (FIFO) with efficient operations
   - Singly Linked List with iterator support
 - **Tree Structures**
   - Binary Search Tree with O(log n) operations
-  - AVL Tree with automatic balancing
+  - AVL Tree with automatic balancing (guaranteed O(log n))
+  - Red-Black Tree with guaranteed O(log n) operations
   - Trie (prefix tree) for string operations
 - **Hash Structures**
   - HashMap with separate chaining collision resolution
   - HashSet with set operations (union, intersection, difference)
+  - BloomFilter probabilistic data structure with configurable false positive rate
 - **Heap Structures**
   - Binary Heap (Min/Max variants)
   - Priority Queue with custom priorities
 - **Graph Structures**
   - Graph with adjacency list representation
-  - BFS, DFS, and pathfinding algorithms
+  - WeightedGraph for algorithms requiring edge weights
+  - BFS, DFS, shortest path, and Dijkstra's algorithm
 
 ## 🚀 Quick Start
 
@@ -39,7 +42,7 @@ rust-ds-lib-bee = "0.1.0"
 ### Basic Usage
 
 ```rust
-use rust_ds_lib_bee::{Stack, Queue, LinkedList, BinarySearchTree, HashMap, HashSet};
+use rust_ds_lib_bee::{Stack, Queue, LinkedList, BinarySearchTree, HashMap, HashSet, BloomFilter, WeightedGraph};
 
 // Stack operations
 let mut stack = Stack::new();
@@ -75,6 +78,25 @@ let mut set = HashSet::new();
 set.insert(1);
 set.insert(2);
 assert!(set.contains(&1));
+
+// BloomFilter operations
+let mut filter = BloomFilter::new(1000, 0.01); // 1000 expected items, 1% false positive rate
+filter.insert(&"hello");
+filter.insert(&"world");
+assert!(filter.contains(&"hello")); // might be true (no false negatives)
+assert!(!filter.contains(&"missing")); // definitely false or false positive
+
+// WeightedGraph and Dijkstra's algorithm
+let mut graph = WeightedGraph::directed();
+graph.add_edge("A", "B", 4);
+graph.add_edge("A", "C", 2);
+graph.add_edge("B", "D", 3);
+graph.add_edge("C", "D", 1);
+
+use rust_ds_lib_bee::dijkstra_shortest_path;
+let (distance, path) = dijkstra_shortest_path(&graph, &"A", &"D");
+assert_eq!(distance, Some(3)); // A -> C -> D = 2 + 1 = 3
+assert_eq!(path, Some(vec!["A", "C", "D"]));
 ```
 
 ## 📖 Documentation
@@ -109,7 +131,7 @@ This library is designed with learning in mind:
 Development completed in three phases:
 
 - **Phase 1** ✅: Foundation (Linear structures, testing framework)
-- **Phase 2** ✅: Core Trees & Hashing (BST, HashMap, HashSet)  
+- **Phase 2** ✅: Core Trees & Hashing (BST, HashMap, HashSet)
 - **Phase 3** ✅: Advanced Structures (AVL, Heaps, Graphs, Trie)
 
 ## 🤝 Contributing
@@ -125,9 +147,42 @@ cargo test
 cargo bench
 ```
 
-## 📊 Performance
+## 📊 Performance & Complexity Analysis
 
 All data structures include comprehensive benchmarks. Run `cargo bench` to see performance characteristics on your system.
+
+### Time Complexity Overview
+
+| Data Structure | Insert | Search/Contains | Delete | Peek/Access | Space |
+|----------------|--------|----------------|--------|-------------|-------|
+| **Stack** | O(1) | - | O(1) | O(1) | O(n) |
+| **Queue** | O(1) | - | O(1) | O(1) | O(n) |
+| **LinkedList** | O(1)* | O(n) | O(1)* | O(1) | O(n) |
+| **BinarySearchTree** | O(log n)** | O(log n)** | O(log n)** | O(log n)** | O(n) |
+| **AVL Tree** | O(log n) | O(log n) | O(log n) | O(log n) | O(n) |
+| **Red-Black Tree** | O(log n) | O(log n) | O(log n) | O(log n) | O(n) |
+| **Trie** | O(m) | O(m) | O(m) | O(1) | O(ALPHABET × N × M) |
+| **HashMap** | O(1)*** | O(1)*** | O(1)*** | O(1)*** | O(n) |
+| **HashSet** | O(1)*** | O(1)*** | O(1)*** | - | O(n) |
+| **BloomFilter** | O(k) | O(k) | - | - | O(m) |
+| **BinaryHeap** | O(log n) | - | O(log n) | O(1) | O(n) |
+| **PriorityQueue** | O(log n) | - | O(log n) | O(1) | O(n) |
+| **Graph** | O(1) | O(V + E) | O(V + E) | O(1) | O(V + E) |
+| **WeightedGraph** | O(1) | O(V + E) | O(V + E) | O(1) | O(V + E) |
+| **Dijkstra's Algorithm** | - | O((V + E) log V) | - | - | O(V) |
+
+**Notes:**
+- \* Front/back operations only; arbitrary position is O(n)
+- \*\* Worst case O(n) for unbalanced trees; average case O(log n)
+- \*\*\* Average case; worst case O(n) due to hash collisions
+- `m` = string length, `k` = number of hash functions, `V` = vertices, `E` = edges
+
+### Space-Time Trade-offs
+
+- **AVL vs Red-Black Trees**: AVL trees are more strictly balanced (faster lookups) but require more rotations during insertion/deletion
+- **HashMap vs Trie**: HashMap offers O(1) operations but Trie provides prefix operations and guaranteed O(m) complexity
+- **BloomFilter**: Trades false positives for memory efficiency - uses only ~10 bits per element regardless of element size
+- **BinaryHeap**: Excellent for priority operations but doesn't support arbitrary key updates efficiently
 
 ## 🛡️ Safety
 
@@ -142,9 +197,7 @@ Rust 1.70 or later.
 
 ## 📄 License
 
-Licensed under either of
 - MIT license ([LICENSE-MIT](LICENSE-MIT) or http://opensource.org/licenses/MIT)
-
 
 ## 🙏 Acknowledgments
 
